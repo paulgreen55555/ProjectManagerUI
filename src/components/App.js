@@ -1,13 +1,8 @@
-import React from 'react';
-import Header from './Header.js';
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
+import Page from './Page'
 
-function App(){
-    return(
-        <div>
-            <Header/>
-            <div>APP</div>
-        </div>
-    )
-}
+function App() { return (<Page/>) }
 
 export default App
+
