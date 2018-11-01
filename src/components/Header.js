@@ -7,7 +7,7 @@ function Header() {
         <div>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">Dashboard</Link>
                 </li>
                 <li>
                     <Link to="/projects">Projects</Link>

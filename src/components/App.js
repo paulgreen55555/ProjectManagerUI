@@ -1,11 +1,11 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import Dashboard from './Dashboard/Dashboard.js'
+import Projects from './Projects/Projects.js'
 
-const Index = () => <h2>Home</h2>;
-const Projects = () => <h2>Projects</h2>;
 const Users = () => <h2>Users</h2>;
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Router>
             <div>
                 <Header />
-                <Route path="/" exact component={Index} />
+                <Route path="/" exact component={Dashboard} />
                 <Route path="/projects/" component={Projects} />
                 <Route path="/users/" component={Users} />
                 <Footer/>
