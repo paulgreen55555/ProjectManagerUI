@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ProjectActionsButtons from './ProjectActionsButtons'
 
 class Project extends Component {
     render() {
@@ -10,6 +11,7 @@ class Project extends Component {
                 <td>{project.startDate}</td>
                 <td>{project.endDate}</td>
                 <td>{project.status}</td>
+                <td><ProjectActionsButtons/></td>
             </tr>
         )
     }

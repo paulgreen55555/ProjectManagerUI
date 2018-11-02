@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Project from './Project'
 import Data from './ProjectsListApi'
 import Search from './ProjectSearch'
+import {Table} from 'react-bootstrap'
 
 class ProjectList extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class ProjectList extends Component {
         return (
             <div>
                 <Search filter={this.filterList} />
-                <table>
+                <Table striped bordered condensed hover>
                     <thead>
                         <tr>
                             <th>Project</th>
@@ -46,7 +47,7 @@ class ProjectList extends Component {
                             }
 
                     </tbody>
-                </table>
+                </Table>
             </div>
         )
     }
