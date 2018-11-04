@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 function Header() {
     return (
@@ -8,7 +8,7 @@ function Header() {
             < Navbar >
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="#home">Project-Manager</a>
+                        <Link to="/">Project-Manager</Link>
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
@@ -24,11 +24,7 @@ function Header() {
                 </Nav>
             </Navbar >
         </div>
-
     )
-
-
-
 }
 
 export default Header

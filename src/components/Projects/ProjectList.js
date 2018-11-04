@@ -8,7 +8,7 @@ class ProjectList extends Component {
     constructor(props) {
         const data = Data.projects;
         super(props);
-        this.state = { items: Data.projects, itemsFullList: Data.projects };
+        this.state = { items: data, itemsFullList: Data.projects };
         this.filterList = this.filterList.bind(this);
 
     }

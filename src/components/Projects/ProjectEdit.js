@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
-import ProjectGrid from './ProjectGrid'
+import Modal from 'react-modal'
+import { Button } from 'react-bootstrap'
 
 class ProjectEdit extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isModalNewProjectOpen: false
+        }
+    }
+    handleClose = () => {
+        this.setState({ isModalNewProjectOpen: false });
+    }
+
     render() {
+
         return (
-            <div>
-                <h1>Projects</h1>
-                <button>New project</button>
-                <ProjectGrid />
-            </div>
+            <Modal isOpen={this.state.isModalNewProjectOpen} >
+                <div>Modal window</div>
+                <Button bsStyle="success" onClick={this.handleClose}>Close</Button>
+            </Modal>
         )
     }
 }
