@@ -6,17 +6,14 @@ import {Table} from 'react-bootstrap'
 
 class ProjectList extends Component {
     constructor(props) {
-        const data = Data.projects;
         super(props);
-        this.state = { items: data, itemsFullList: Data.projects };
+        this.state = { items: Data.projects };
         this.filterList = this.filterList.bind(this);
 
     }
     filterList(text) {
-        if (text.length === 0) {
-            return this.setState({ items: this.state.itemsFullList });
-        }
-        var filteredList = this.state.items.filter(function (item) {
+        const data = Data.projects;
+        var filteredList = data.filter(function (item) {
             return item.description.toLowerCase().search(text.toLowerCase()) !== -1;
         });
         this.setState({ items: filteredList });

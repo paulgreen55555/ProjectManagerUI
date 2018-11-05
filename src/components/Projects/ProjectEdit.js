@@ -6,17 +6,18 @@ class ProjectEdit extends Component {
     constructor() {
         super();
         this.state = {
-            isModalNewProjectOpen: false
+            isOpen: false
         }
     }
+    
     handleClose = () => {
-        this.setState({ isModalNewProjectOpen: false });
+        this.setState({ isOpen: false });
     }
 
     render() {
 
         return (
-            <Modal isOpen={this.state.isModalNewProjectOpen} >
+            <Modal isOpen={this.state.isOpen} >
                 <div>Modal window</div>
                 <Button bsStyle="success" onClick={this.handleClose}>Close</Button>
             </Modal>

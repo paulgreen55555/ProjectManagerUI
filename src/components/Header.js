@@ -18,7 +18,7 @@ function Header() {
                     <NavItem eventKey={2} href="#">
                         <Link to="/projects">Projects</Link>
                     </NavItem>
-                    <NavItem eventKey={2} href="#">
+                    <NavItem eventKey={3} href="#">
                         <Link to="/users">Users</Link>
                     </NavItem>
                 </Nav>
