@@ -12,18 +12,28 @@ function Header() {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem eventKey={1} href="#">
-                        <Link to="/">Dashboard</Link>
+                    <NavItem eventKey={1} href="/">
+                        Dashboard
                     </NavItem>
-                    <NavItem eventKey={2} href="#">
-                        <Link to="/projects">Projects</Link>
+                    <NavItem eventKey={2} href="/projects">
+                        Projects
                     </NavItem>
-                    <NavItem eventKey={3} href="#">
-                        <Link to="/users">Users</Link>
+                    <NavItem eventKey={3} href="/users">
+                        Users
                     </NavItem>
                 </Nav>
+            <div>
+                <Link to="/">Dashboard</Link>
+
+
+                <Link to="/projects">Projects</Link>
+
+
+                <Link to="/users">Users</Link>
+
+            </div>
             </Navbar >
-        </div>
+        </div >
     )
 }
 

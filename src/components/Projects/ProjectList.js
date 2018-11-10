@@ -14,7 +14,7 @@ class ProjectList extends Component {
     filterList(text) {
         const data = Data.projects;
         var filteredList = data.filter(function (item) {
-            return item.description.toLowerCase().search(text.toLowerCase()) !== -1;
+            return item.Description.toLowerCase().search(text.toLowerCase()) !== -1;
         });
         this.setState({ items: filteredList });
     }
@@ -39,7 +39,7 @@ class ProjectList extends Component {
 
                             {
                                 this.state.items.map(function (project) {
-                                    return <Project key={project.id} project={project} />
+                                    return <Project key={project.ProjectId} project={project} />
                                 })
                             }
 

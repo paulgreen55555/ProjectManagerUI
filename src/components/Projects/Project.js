@@ -6,10 +6,10 @@ class Project extends Component {
         const { project } = this.props
         return (
             <tr>
-                <td>{project.title}</td>
-                <td>{project.description}</td>
-                <td>{project.startDate}</td>
-                <td>{project.endDate}</td>
+                <td>{project.Name}</td>
+                <td>{project.Description}</td>
+                <td>{project.StartDate}</td>
+                <td>{project.EndDate}</td>
                 <td>{project.status}</td>
                 <td><ProjectActionsButtons/></td>
             </tr>
