@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 const API = 'http://localhost:1434/projects';
 
@@ -13,24 +13,21 @@ class StatisticModule extends Component {
 
   componentDidMount() {
 
-    var myInit = { method: 'GET',
-               mode: 'no-cors',
-               cache: 'default' };
+    var fetchInit = {
+      method: 'GET',
+      cache: 'default'
+    };
 
-    fetch(API,myInit)
+    fetch(API,fetchInit)
       .then(response => response.json())
-      .then(data => this.setState({ projects: data}));
+      .then(data => this.setState({ projects: data }));
   }
 
   render() {
     const { projects } = this.state;
-    
+
     return (
-      <ul>
-        {projects.map(project =>
-          <li key={project.ProjectId}></li>
-        )}
-      </ul>
+      <div>Project count - {projects.length}</div>
     );
   }
 
