@@ -1,18 +1,32 @@
 import React, { Component } from 'react'
 import Project from './Project'
-import Data from './ProjectsListApi'
-import Search from './ProjectSearch'
+import Search from './Search'
 import {Table} from 'react-bootstrap'
+
+const API = 'http://localhost:1434/projects';
 
 class ProjectList extends Component {
     constructor(props) {
         super(props);
-        this.state = { items: Data.projects };
+        this.state = { items: [] };
         this.filterList = this.filterList.bind(this);
 
-    }
+    }  
+
+    componentDidMount() {
+
+        var fetchInit = {
+          method: 'GET',
+          cache: 'default'
+        };
+    
+        fetch(API,fetchInit)
+          .then(response => response.json())
+          .then(data => this.setState({ items: data }));
+      }
+
     filterList(text) {
-        const data = Data.projects;
+        const data = this.state.items;
         var filteredList = data.filter(function (item) {
             return item.Description.toLowerCase().search(text.toLowerCase()) !== -1;
         });

@@ -1,32 +1,36 @@
 import React, { Component } from 'react'
-import ProjectGrid from './ProjectGrid'
+import ProjectList from './ProjectList'
 import { Button } from 'react-bootstrap'
-import ProjectEdit from './ProjectEdit'
+import { Link } from "react-router-dom";
 
 class Projects extends Component {
     constructor() {
         super();
-        this.state = { isModalNewProjectOpen: false };
+        this.state = { isModalProjectAddOpen: false };
+        this.handleProjectAdd = this.handleProjectAdd.bind(this);
     }
-    handleNewProjAdd = () => {
-        this.setState({ isModalNewProjectOpen: true });
+    handleProjectAdd = () => {
+        this.setState({ isModalProjectAddOpen: true });
     }
-    
+
     render() {
         return (
             <div>
                 <h1>Projects</h1>
                 <div className="row">
                     <div className="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
-                        <div className="pull-right"><Button bsStyle="success" onClick={this.handleNewProjAdd}> + New project</Button></div>
-                        <ProjectEdit isOpen={this.state.isModalNewProjectOpen}></ProjectEdit>
+                        <div className="pull-right">
+                            <Link to="/project-add">
+                                <Button bsStyle="success">+ New project</Button>
+                            </Link>
+                         </div>
+                        </div>
                     </div>
+                    <ProjectList />
                 </div>
-                <ProjectGrid />
-            </div>
-        )
-    }
-}
-
-export default Projects
-
+                )
+            }
+        }
+        
+        export default Projects
+        

@@ -6,7 +6,7 @@ class ProjectEdit extends Component {
     constructor() {
         super();
         this.state = {
-            isOpen: false
+            isOpen: {}
         }
     }
     

@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Dashboard from './Dashboard/Dashboard.js'
 import Projects from './Projects/Projects.js'
+import ProjectAdd from './Projects/ProjectAdd'
 
 
 const Users = () => <h2>Users</h2>;
@@ -16,6 +17,7 @@ function App() {
                 <div className="container">
                     <Route path="/" exact component={Dashboard} />
                     <Route path="/projects/" component={Projects} />
+                    <Route path="/project-add/" component={ProjectAdd} />
                     <Route path="/users/" component={Users} />
                 </div>
                 <Footer />

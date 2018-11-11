@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class ProjectSearch extends Component{
+class Search extends Component{
              
     constructor(props){
         super(props);
@@ -17,4 +17,4 @@ class ProjectSearch extends Component{
     }
 }
 
-export default ProjectSearch
+export default Search
