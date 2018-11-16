@@ -6,7 +6,8 @@ class ProjectActionButtons extends Component {
         return (
             <div>
                 <ButtonGroup>
-                    <Button bsStyle="info" bsSize="small">Edit</Button>
+                    <Button bsStyle="warning" bsSize="small">Edit</Button>
+                    <Button bsStyle="info" bsSize="small">Close</Button>
                     <Button bsStyle="danger" bsSize="small">Delete</Button>
                 </ButtonGroup>
             </div>

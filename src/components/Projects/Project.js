@@ -10,7 +10,7 @@ class Project extends Component {
                 <td>{project.Description}</td>
                 <td>{project.StartDate}</td>
                 <td>{project.EndDate}</td>
-                <td>{project.status}</td>
+                <td>{project.ProjectStatus}</td>
                 <td><ProjectActionsButtons/></td>
             </tr>
         )

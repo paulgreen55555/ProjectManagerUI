@@ -8,7 +8,8 @@ export default class ProjectAdd extends Component {
         this.state = {
             Name: '',
             Description: '',
-            StartDate: '',
+            StartDate: new Date(),
+            EndDate: new Date()
 
         };
 
@@ -26,10 +27,10 @@ export default class ProjectAdd extends Component {
 
         const formElement = document.getElementById("projectForm");
 
-        var fulldata = $(formElement).serializeArray();
-        var data = {};
+        const fulldata = $(formElement).serializeArray();
+        const data = {};
 
-        $.map(fulldata, function(n, i){
+        $.map(fulldata, function (n, i) {
             data[n['name']] = n['value'];
         });
 
@@ -39,11 +40,11 @@ export default class ProjectAdd extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            
+
             body: JSON.stringify(data)
         });
 
-        debugger;
+
 
     }
 
@@ -59,10 +60,6 @@ export default class ProjectAdd extends Component {
               <input name="Description" type="text" value={this.state.Description} />
                 </label>
                 <label>
-                    OwnerId:
-              <input name="OwnerId" type="text" value={this.state.OwnerId} />
-                </label>
-                <label>
                     Start date:
               <input name="StartDate" type="date" value={this.state.StartDate} onChange={this.handleChange} />
                 </label>
@@ -70,14 +67,9 @@ export default class ProjectAdd extends Component {
                     End date:
               <input name="EndDate" type="date" value={this.state.EndDate} onChange={this.handleChange} />
                 </label>
-                <label>
-                    Close date:
-              <input name="CloseDate" type="date" value={this.state.CloseDate} onChange={this.handleChange} />
-                </label>
-
-
                 <input type="submit" value="Save" />
-            </form>
+
+            </form >
         );
     }
 }
