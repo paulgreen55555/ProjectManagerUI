@@ -13,7 +13,7 @@ class Search extends Component{
     }
              
     render() {
-        return <input placeholder="Search" onChange={this.onTextChanged} />;
+        return <input className="m-2" placeholder="Search" onChange={this.onTextChanged} />;
     }
 }
 
