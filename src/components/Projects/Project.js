@@ -3,15 +3,20 @@ import ProjectActionsButtons from './ProjectActionsButtons'
 
 class Project extends Component {
     render() {
-        const { project } = this.props
+        const { ProjectId, Name, Description, StartDate, EndDate, ProjectStatus } = this.props.project
         return (
             <tr>
-                <td>{project.Name}</td>
-                <td>{project.Description}</td>
-                <td>{project.StartDate}</td>
-                <td>{project.EndDate}</td>
-                <td>{project.ProjectStatus}</td>
-                <td><ProjectActionsButtons/></td>
+                <td>{Name}</td>
+                <td>{Description}</td>
+                <td>{StartDate}</td>
+                <td>{EndDate}</td>
+                <td>{ProjectStatus === 0 ? "Open" : "Close"}</td>
+                <td>
+                    <ProjectActionsButtons
+                        onDelete={() => this.props.onDelete(ProjectId)}
+                        onClose={() => this.props.onClose(ProjectId)}
+                    />
+                </td>
             </tr>
         )
     }

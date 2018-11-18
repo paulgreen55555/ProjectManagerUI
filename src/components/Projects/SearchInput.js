@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class SearchInput extends Component{
       
     onTextChanged = e => {
-        debugger;
         var text = e.target.value.trim();
         this.props.filter(text);
     }

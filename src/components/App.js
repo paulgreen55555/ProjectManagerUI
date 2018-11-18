@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './Header'
 import Footer from './Footer'
 import Dashboard from './Dashboard/Dashboard.js'
-import Projects from './Projects/Projects.js'
+import Projects from './Projects/ProjectsPage.js'
 import ProjectAdd from './Projects/ProjectAdd'
 
 function App() {
