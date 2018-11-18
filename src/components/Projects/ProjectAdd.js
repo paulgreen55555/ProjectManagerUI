@@ -2,18 +2,16 @@ import React, { Component } from 'react'
 import $ from 'jquery';
 
 const PROJECT_ADD_API = "http://localhost:1434/projects";
-export default class ProjectAdd extends Component {
+class ProjectAdd extends Component {
 
     handleChange = event => {
-        const a = event.target.name;
-        this.setState({ [a]: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit = event => {
         event.preventDefault();
 
         const formElement = document.getElementById("projectForm");
-
         const fulldata = $(formElement).serializeArray();
         const data = {};
 
@@ -27,37 +25,43 @@ export default class ProjectAdd extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-
             body: JSON.stringify(data)
         });
-
-
-
     }
 
     render() {
         return (
             <form id="projectForm" onSubmit={this.handleSubmit} onChange={this.handleChange}>
                 <div className="form-group">
-                    <label for="Name">Project Name:</label>
-                    <input type="text" className="form-control" name="Name" />
+                    <label>
+                        Project Name:
+                        <input type="text" className="form-control" name="Name" />
+                    </label>
                 </div>
                 <div className="form-group">
-                    <label for="Description">Description:</label>
-                    <input type="text" className="form-control" name="Description" />
+                    <label>
+                        Description:
+                        <input type="text" className="form-control" name="Description" />
+                    </label>
                 </div>
                 <div className="form-group">
-                    <label for="StartDate">Start Date:</label>
-                    <input type="date" name="StartDate" />
+                    <label>
+                        Start Date:
+                        <input type="date" name="StartDate" />
+                    </label>
                 </div>
                 <div className="form-group">
-                    <label for="EndDate">End Date:</label>
-                    <input type="date" name="EndDate" />
+                    <label>
+                        End Date:
+                        <input type="date" name="EndDate" />
+                    </label>
                 </div>
                 <button type="submit" className="btn btn-primary">Save</button>
             </form>
         );
     }
 }
+
+export default ProjectAdd
 
 

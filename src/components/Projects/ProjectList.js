@@ -1,62 +1,52 @@
 import React, { Component } from 'react'
 import Project from './Project'
-import Search from './Search'
-import {Table} from 'react-bootstrap'
+import SearchInput from './Search'
+import { Table } from 'react-bootstrap'
 
 const API = 'http://localhost:1434/projects';
+const tableHeaders = ["Project", "Description", "Start Date", "End Date", "Status", "Actions"];
 
 class ProjectList extends Component {
     constructor(props) {
         super(props);
-        this.state = { items: [] };
-        this.filterList = this.filterList.bind(this);
-
-    }  
+        this.state = { projects: [] };
+    }
 
     componentDidMount() {
 
-        var fetchInit = {
-          method: 'GET',
-          cache: 'default'
+        let fetchInit = {
+            method: 'GET',
+            cache: 'default'
         };
-    
-        fetch(API,fetchInit)
-          .then(response => response.json())
-          .then(data => this.setState({ items: data }));
-      }
 
-    filterList(text) {
-        const data = this.state.items;
-        var filteredList = data.filter(function (item) {
+        fetch(API, fetchInit)
+            .then(response => response.json())
+            .then(data => this.setState({ projects: data }));
+    }
+
+    filterList = text => {
+        let data = this.state.projects;
+        let filteredList = data.filter(function (item) {
             return item.Description.toLowerCase().search(text.toLowerCase()) !== -1;
         });
-        this.setState({ items: filteredList });
+        this.setState({ projects: filteredList });
     }
 
     render() {
 
         return (
             <div>
-                <Search filter={this.filterList} />
+                <SearchInput filter={this.filterList} placeholder="Search project" />
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>
-                            <th>Project</th>
-                            <th>Description</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            {tableHeaders.map(tbH => <th key={tbH}>{tbH}</th>)}
                         </tr>
                     </thead>
                     <tbody>
-
-                            {
-                                this.state.items.map(function (project) {
-                                    return <Project key={project.ProjectId} project={project} />
-                                })
-                            }
-
+                        {
+                            this.state.projects.map(project => <Project key={project.ProjectId} project={project} />)
+                        }
                     </tbody>
                 </Table>
             </div>

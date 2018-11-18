@@ -1,20 +1,16 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
-class Search extends Component{
-             
-    constructor(props){
-        super(props);
-        this.onTextChanged = this.onTextChanged.bind(this);
-    }
-             
-    onTextChanged(e){
+class SearchInput extends Component{
+      
+    onTextChanged = e => {
+        debugger;
         var text = e.target.value.trim();
         this.props.filter(text);
     }
              
     render() {
-        return <input className="m-2" placeholder="Search" onChange={this.onTextChanged} />;
+        return <input className="m-2" placeholder={this.props.placeholder} onChange={this.onTextChanged} />;
     }
 }
 
-export default Search
+export default SearchInput;
