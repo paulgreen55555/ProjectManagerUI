@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Project from './Project'
 import SearchInput from './SearchInput'
 import { Table } from 'react-bootstrap'
+import * as CONST from '../variables.js'
 
-const API = 'http://localhost:1434/projects';
+
 const tableHeaders = ["Project", "Description", "Start Date", "End Date", "Status", "Actions"];
 
 class ProjectList extends Component {
@@ -13,15 +14,17 @@ class ProjectList extends Component {
     }
 
     getDataFromApi = () => {
+
         let fetchInit = {
             method: 'GET',
         };
 
-        fetch(API, fetchInit)
+        fetch(CONST.PROJECT_API, fetchInit)
             .then(response => response.json())
             .then(data => {
-                this.setState({ projects: data, projectList: data  })
+                this.setState({ projects: data, projectList: data })
             });
+
     }
 
     componentDidMount() {
@@ -41,25 +44,7 @@ class ProjectList extends Component {
         let fetchInit = {
             method: 'DELETE',
         };
-        fetch(API + "/" + id, fetchInit).then(this.setState({ projects: projects }));
-    }
-
-    handleClose = id => {
-        const data = this.state.projects.filter(p => p.ProjectId === id);
-        data[0].ProjectStatus = 1;
-
-
-        let fetchInit = {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data[0])
-        };
-
-        fetch(API + "/" + id, fetchInit);
-
+        fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ projects: projects }));
     }
 
     render() {
@@ -79,7 +64,6 @@ class ProjectList extends Component {
                                     key={project.ProjectId}
                                     project={project}
                                     onDelete={this.handleDelete}
-                                    onClose={this.handleClose}
                                 />
                             )
                         }

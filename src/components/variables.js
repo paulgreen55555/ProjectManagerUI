@@ -1,0 +1,1 @@
+export const PROJECT_API = "http://localhost:1434/projects"

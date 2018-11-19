@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-
-const API = 'http://localhost:1434/projects';
+import * as CONST from '../variables.js'
 
 class StatisticModule extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
-      projects: [],
+      projectsCount: 0
     };
   }
 
@@ -18,16 +17,15 @@ class StatisticModule extends Component {
       cache: 'default'
     };
 
-    fetch(API,fetchInit)
+    fetch(CONST.PROJECT_API,fetchInit)
       .then(response => response.json())
-      .then(data => this.setState({ projects: data }));
+      .then(data => this.setState({ projectsCount: data.length }));
   }
 
   render() {
-    const { projects } = this.state;
 
     return (
-      <div>Project count - {projects.length}</div>
+      <div>Project count - {this.state.projectsCount}</div>
     );
   }
 
