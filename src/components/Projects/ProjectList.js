@@ -3,6 +3,7 @@ import Project from './Project'
 import SearchInput from './SearchInput'
 import { Table } from 'react-bootstrap'
 import * as CONST from '../variables.js'
+import ProjectEdit from './ProjectEdit';
 
 
 const tableHeaders = ["Project", "Description", "Start Date", "End Date", "Status", "Actions"];
@@ -10,7 +11,10 @@ const tableHeaders = ["Project", "Description", "Start Date", "End Date", "Statu
 class ProjectList extends Component {
     constructor(props) {
         super(props);
-        this.state = { projects: [] };
+        this.state = { 
+            projects: [], 
+            projectEditOpen: true
+        };
     }
 
     getDataFromApi = () => {
@@ -34,7 +38,7 @@ class ProjectList extends Component {
     filterList = text => {
         let data = this.state.projectList;
         let filteredList = data.filter(function (item) {
-            return item.Description.toLowerCase().search(text.toLowerCase()) !== -1;
+            return item.Name.toLowerCase().search(text.toLowerCase()) !== -1;
         });
         this.setState({ projects: filteredList });
     }
@@ -47,10 +51,14 @@ class ProjectList extends Component {
         fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ projects: projects }));
     }
 
+    handleEdite = id =>{
+        this.setState({projectEditOpen: true});
+    }
+
     render() {
         return (
             <div>
-                <SearchInput filter={this.filterList} placeholder="Search project" />
+                <SearchInput filter={this.filterList} placeholder="Search by name" />
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>
@@ -64,11 +72,13 @@ class ProjectList extends Component {
                                     key={project.ProjectId}
                                     project={project}
                                     onDelete={this.handleDelete}
+                                    onEdite={this.handleEdite}
                                 />
                             )
                         }
                     </tbody>
                 </Table>
+                <ProjectEdit project={this.state.projects[0]}/>
             </div>
         )
     }

@@ -11,7 +11,7 @@ class Project extends Component {
     handleClose = id => {
         let data = this.props.project;
         data.ProjectStatus = 1;
-    
+
         let fetchInit = {
             method: 'PUT',
             headers: {
@@ -21,8 +21,13 @@ class Project extends Component {
             body: JSON.stringify(data)
         };
 
-        fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({status: 1}));
+        fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ status: 1 }));
 
+    }
+
+    getDate = (date) => {
+        const fullDate = new Date(Date.parse(date));
+        return fullDate.getDate() + "-" +  fullDate.getMonth() + "-" + fullDate.getFullYear()  
     }
 
     render() {
@@ -31,8 +36,8 @@ class Project extends Component {
             <tr>
                 <td>{Name}</td>
                 <td>{Description}</td>
-                <td>{StartDate}</td>
-                <td>{EndDate}</td>
+                <td>{this.getDate(StartDate)}</td>
+                <td>{this.getDate(EndDate)}</td>
                 <td>{this.state.status === 0 ? "Open" : "Close"}</td>
                 <td>
                     <ProjectActionsButtons
