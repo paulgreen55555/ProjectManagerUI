@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class ProjectAddBtn extends Component {
     render() {
         return (
-            <div className="float-right m-2">
+            <div className="float-right mb-2">
                 <Link to="/project-add">
                     <Button bsStyle="success">+ New project</Button>
                 </Link>

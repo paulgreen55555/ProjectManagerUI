@@ -13,7 +13,8 @@ class ProjectList extends Component {
         super(props);
         this.state = { 
             projects: [], 
-            projectEditOpen: true
+            projectEditOpen: false,
+            projectForEdit: {}
         };
     }
 
@@ -51,8 +52,8 @@ class ProjectList extends Component {
         fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ projects: projects }));
     }
 
-    handleEdite = id =>{
-        this.setState({projectEditOpen: true});
+    handleEdit = id =>{
+        this.setState({projectEditOpen: true, projectForEdit: this.state.projects.filter(p => p.ProjectId === id)});
     }
 
     render() {
@@ -72,13 +73,15 @@ class ProjectList extends Component {
                                     key={project.ProjectId}
                                     project={project}
                                     onDelete={this.handleDelete}
-                                    onEdite={this.handleEdite}
+                                    onEdit={this.handleEdit}
                                 />
                             )
                         }
                     </tbody>
                 </Table>
-                <ProjectEdit project={this.state.projects[0]}/>
+                <ProjectEdit
+                    project={this.state.projectForEdit}
+                    isOpen={this.state.projectEditOpen}/>
             </div>
         )
     }

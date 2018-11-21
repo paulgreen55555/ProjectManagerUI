@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import $ from 'jquery';
 import DatePicker from "react-datepicker";
 import { Redirect } from 'react-router-dom'
+import * as CONST from '../variables.js'
 
-
-const PROJECT_ADD_API = "http://localhost:1434/projects";
 class ProjectAdd extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +42,7 @@ class ProjectAdd extends Component {
             data[n['name']] = n['value'];
         });
 
-        fetch(PROJECT_ADD_API, {
+        fetch(CONST.PROJECT_API, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -85,6 +84,7 @@ class ProjectAdd extends Component {
                             dateFormat="dd-MM-yyyy"
                             minDate={new Date()}
                             name="StartDate"
+                            required
                         />
                     </label>
                 </div>
@@ -97,6 +97,7 @@ class ProjectAdd extends Component {
                             dateFormat="dd-MM-yyyy"
                             minDate={new Date()}
                             name="EndDate"
+                            required
                         />
                     </label>
                 </div>

@@ -8,7 +8,7 @@ class SearchInput extends Component{
     }
              
     render() {
-        return <input className="m-2" placeholder={this.props.placeholder} onChange={this.onTextChanged} />;
+        return <input className="form-control w-25" placeholder={this.props.placeholder} onChange={this.onTextChanged} />;
     }
 }
 

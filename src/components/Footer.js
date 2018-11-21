@@ -2,11 +2,12 @@ import React from 'react'
 
 function Footer() {
     return (
-        <div id="footer">
+        <footer id="footer">
             <div className="container">
-                <p className="text-muted">Copyright © 2018</p>
+                <span className="text-muted">Copyright © 2018</span>
             </div>
-        </div>
+        </footer>
+
 
     )
 }

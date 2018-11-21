@@ -12,16 +12,19 @@ class Project extends Component {
         let data = this.props.project;
         data.ProjectStatus = 1;
 
+        let jsonData =  JSON.stringify(data)
+
+        debugger;
         let fetchInit = {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: jsonData
         };
 
-        fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ status: 1 }));
+        fetch(CONST.PROJECT_API + "/" + id, fetchInit).then(this.setState({ status: 1  }));
 
     }
 
@@ -42,6 +45,7 @@ class Project extends Component {
                 <td>
                     <ProjectActionsButtons
                         onDelete={() => this.props.onDelete(ProjectId)}
+                        onEdit={() => this.props.onEdit(ProjectId)}
                         onClose={this.handleClose}
                         isClose={ProjectStatus}
                     />
